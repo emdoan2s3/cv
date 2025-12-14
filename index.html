@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Sinh viên IT | emdon.site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Inter, sans-serif;
+      margin: 0;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    header {
+      background: #2563eb;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      margin-bottom: 10px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      color: #64748b;
+      padding: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="avatar.jpg" alt="Avatar" class="avatar">
+  <h1>Nguyễn Ngọc Đoàn</h1>
+  <p>Sinh viên IT · Fresher Web Developer</p>
+</header>
+
+<main>
+  <div class="card" onclick="openPage('info')">
+    <h2>Thông tin cá nhân</h2>
+  </div>
+  <div class="card" onclick="openPage('skills')">
+    <h2>Kỹ năng</h2>
+  </div>
+  <div class="card" onclick="openPage('projects')">
+    <h2>Dự án</h2>
+  </div>
+  <div class="card" onclick="openPage('education')">
+    <h2>Học vấn</h2>
+  </div>
+</main>
+
+<footer>
+  © 2025 emdon.site · CV Sinh viên IT
+</footer>
+
+<script>
+function openPage(section) {
+  let content = '';
+  switch(section) {
+    case 'info':
+      content = `
+        <h1>Thông tin cá nhân</h1>
+        <p><b>Email:</b> doank33a2@gmail.com</p>
+        <p><b>SĐT:</b> 0942734019</p>
+        <p><b>Website:</b> emdon.site</p>
+        <p><b>GitHub:</b> github.com/emdon2s3</p>
+      `;
+      break;
+    case 'skills':
+      content = `
+        <h1>Kỹ năng</h1>
+        <ul>
+          <li>HTML5, CSS3 (Responsive)</li>
+          <li>JavaScript (DOM, Event)</li>
+          <li>Git, GitHub, GitHub Pages</li>
+        </ul>
+      `;
+      break;
+    case 'projects':
+      content = `
+        <h1>Dự án</h1>
+        <p><b>Website CV cá nhân:</b> HTML, CSS, JS, deploy GitHub Pages</p>
+        <p><b>Website Quản lý Sinh viên:</b> CRUD cơ bản, lưu dữ liệu bằng LocalStorage</p>
+      `;
+      break;
+    case 'education':
+      content = `
+        <h1>Học vấn</h1>
+        <p>Đại học (2022 – 2026)</p>
+      `;
+      break;
+  }
+
+  const newWindow = window.open('', '_blank', 'width=600,height=700,scrollbars=yes');
+  newWindow.document.write(`
+    <html>
+      <head>
+        <title>${section}</title>
+        <style>
+          body { font-family: Inter, sans-serif; padding: 30px; background: #f8fafc; color: #0f172a; }
+          h1 { color: #2563eb; }
+          ul { padding-left: 20px; }
+        </style>
+      </head>
+      <body>
+        ${content}
+      </body>
+    </html>
+  `);
+  newWindow.document.close();
+}
+</script>
+
+</body>
+</html>
