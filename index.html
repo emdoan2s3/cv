@@ -16,7 +16,7 @@
     header {
       background: #2563eb;
       color: #fff;
-      padding: 40px 20px;
+      padding: 50px 20px;
       text-align: center;
     }
 
@@ -53,58 +53,32 @@
       box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
 
-    h2 {
-      margin-top: 0;
-    }
-
-    #content {
-      max-width: 900px;
-      margin: 30px auto;
-      background: #fff;
-      padding: 25px 20px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      text-align: left;
-    }
-
     .links {
-      max-width: 900px;
-      margin: 20px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 15px;
-      text-align: center;
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
     }
 
     .link-button {
-      padding: 15px;
+      padding: 6px 12px;
+      border-radius: 6px;
       background: #2563eb;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-size: 1rem;
-      cursor: pointer;
+      color: #fff;
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s, transform 0.2s;
+      font-size: 14px;
+      transition: 0.2s;
     }
 
     .link-button:hover {
       background: #1e40af;
-      transform: translateY(-3px);
     }
 
     footer {
       text-align: center;
       color: #64748b;
       padding: 30px;
-    }
-
-    @media(max-width:500px){
-      main{grid-template-columns:1fr;}
-      .links{grid-template-columns:1fr;}
     }
   </style>
 </head>
@@ -117,49 +91,48 @@
 </header>
 
 <main>
-  <div class="card" onclick="showContent('info')">
+  <div class="card" onclick="openPage('info')">
     <h2>Thông tin cá nhân</h2>
   </div>
-  <div class="card" onclick="showContent('skills')">
+  <div class="card" onclick="openPage('skills')">
     <h2>Kỹ năng</h2>
   </div>
-  <div class="card" onclick="showContent('projects')">
+  <div class="card" onclick="openPage('projects')">
     <h2>Dự án</h2>
   </div>
+  <div class="card" onclick="openPage('education')">
+    <h2>Học vấn</h2>
+  </div>
 </main>
-
-<div id="content">
-  <p>Nhấn vào một card để hiển thị thông tin ở đây.</p>
-</div>
-
-<div class="links">
-  <a class="link-button" href="mailto:doank33a2@gmail.com">Gmail</a>
-  <a class="link-button" href="https://github.com/emdon2s3" target="_blank">GitHub</a>
-  <a class="link-button" href="https://discord.com/users/YourDiscordID" target="_blank">Discord</a>
-  <a class="link-button" href="https://zalo.me/YourZaloID" target="_blank">Zalo</a>
-  <a class="link-button" href="https://www.facebook.com/YourFBID" target="_blank">Facebook</a>
-  <a class="link-button" href="https://www.tiktok.com/@YourTikTokID" target="_blank">TikTok</a>
-</div>
 
 <footer>
   © 2025 emdon.site · CV Sinh viên IT
 </footer>
 
 <script>
-function showContent(section) {
+function openPage(section) {
   let content = '';
   switch(section) {
     case 'info':
       content = `
-        <h2>Thông tin cá nhân</h2>
-        <p><b>Năm sinh:</b> 2002</p>
-        <p><b>Địa chỉ:</b> Hà Nội, Việt Nam</p>
+        <h1>Thông tin cá nhân</h1>
+        <p><b>Email:</b> doank33a2@gmail.com</p>
         <p><b>SĐT:</b> 0942734019</p>
+        <p><b>Website:</b> emdon.site</p>
+        <p><b>GitHub:</b> github.com/emdon2s3</p>
+        <div class="links">
+          <a class="link-button" href="mailto:doank33a2@gmail.com">Gmail</a>
+          <a class="link-button" href="https://github.com/emdon2s3" target="_blank">GitHub</a>
+          <a class="link-button" href="https://discord.com/users/YourDiscordID" target="_blank">Discord</a>
+          <a class="link-button" href="https://zalo.me/YourZaloID" target="_blank">Zalo</a>
+          <a class="link-button" href="https://www.facebook.com/YourFBID" target="_blank">Facebook</a>
+          <a class="link-button" href="https://www.tiktok.com/@YourTikTokID" target="_blank">TikTok</a>
+        </div>
       `;
       break;
     case 'skills':
       content = `
-        <h2>Kỹ năng</h2>
+        <h1>Kỹ năng</h1>
         <ul>
           <li>HTML5, CSS3 (Responsive)</li>
           <li>JavaScript (DOM, Event)</li>
@@ -169,14 +142,40 @@ function showContent(section) {
       break;
     case 'projects':
       content = `
-        <h2>Dự án</h2>
+        <h1>Dự án</h1>
         <p><b>Website CV cá nhân:</b> HTML, CSS, JS, deploy GitHub Pages</p>
         <p><b>Website Quản lý Sinh viên:</b> CRUD cơ bản, lưu dữ liệu bằng LocalStorage</p>
       `;
       break;
+    case 'education':
+      content = `
+        <h1>Học vấn</h1>
+        <p>Đại học (2022 – 2026)</p>
+      `;
+      break;
   }
 
-  document.getElementById('content').innerHTML = content;
+  const newWindow = window.open('', '_blank', 'width=600,height=700,scrollbars=yes');
+  newWindow.document.write(`
+    <html>
+      <head>
+        <title>${section}</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+          body { font-family: Inter, sans-serif; padding: 30px; background: #f8fafc; color: #0f172a; }
+          h1 { color: #2563eb; }
+          ul { padding-left: 20px; }
+          .links { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+          .link-button { padding: 6px 12px; border-radius: 6px; background: #2563eb; color: #fff; text-decoration: none; font-size: 14px; transition: 0.2s; }
+          .link-button:hover { background: #1e40af; }
+        </style>
+      </head>
+      <body>
+        ${content}
+      </body>
+    </html>
+  `);
+  newWindow.document.close();
 }
 </script>
 
